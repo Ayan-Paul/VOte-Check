@@ -1,0 +1,77 @@
+{% extends 'private/base.html' %}
+
+{% block content %} 
+{% load static %}
+
+<div class="container-fluid">
+    <div class="row mb-5">
+      <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row align-items-center">
+            <div class="col-xl-2 col-8">
+            </div>
+          <div class="col-xl-8 col-12 mb-4 mb-xl-0">
+            <h3 class="text-muted text-center mb-3">Registed Voter Id's</h3>
+            <table class="table table-striped bg-light text-center">
+              <thead>
+                <tr class="text-muted">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Voter Id No.</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for register in registers %}
+                <tr>
+                  <th>{{ register.id }}</th>
+                  <td>{{ register.fullname }}</td>
+                  <td>{{ register.voterid }}</td>
+                  <td>{{ register.created }}</td>
+                  <td><button type="button" class="btn btn-info btn-sm">Submitted</button></td>
+                </tr>
+                    {% endfor %}
+                
+              </tbody>
+            </table>
+
+            <!-- pagination -->
+            <nav>
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                      <span>&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item active">
+                    <a href="#" class="page-link py-2 px-3">
+                      1
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                      2
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                      3
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                      <span>&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <!-- end of pagination -->
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+

@@ -1,0 +1,213 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="title icon" href="images/title-img.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'private/images/logo.png' %}" />
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+     <!-- Favicons --> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'private/css/style.css' %}">
+  </head>
+  <body>
+    
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light">
+      <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#myNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- sidebar -->
+            <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+              <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Vote Check</a>
+              <div class="bottom-border pb-3 text-center">
+                <a href="#" class="text-white">{{ user.username }}</a>
+              </div>
+              <ul class="navbar-nav flex-column mt-4">
+                <li class="nav-item"><a href="{% url 'dashboard' %}" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
+                <li class="nav-item"><a href="{% url 'inbox' %}" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i>Inbox</a></li>
+                <li class="nav-item" data-toggle="modal" data-target="#sign-out"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-sign-out-alt text-light fa-lg mr-3"></i>Logout</a></li>
+              </ul>
+            </div>
+            <!-- end of sidebar -->
+
+            <!-- top-nav -->
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto bg-color fixed-top py-2 top-navbar">
+              <div class="row align-items-center">
+                <div class="col-md-4">
+                  <h4 class="text-light text-uppercase mb-0">Dashboard</h4>
+                </div>
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-3">
+                  <ul class="navbar-nav">
+                    <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet"><i class="fas text-white fa-comments fa-lg"></i></a></li>
+                    <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet"><i class="fas text-white fa-bell fa-lg"></i></a></li>
+                    <li class="nav-item ml-md-auto"><a href="#" class="nav-link" data-toggle="modal" data-target="#sign-out"><i class="fas fa-sign-out-alt text-white fa-lg"></i></a></li>
+                    
+                </ul>
+                  
+                </div>
+              </div>
+            </div>
+            <!-- end of top-nav -->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end of navbar -->
+
+    <!-- modal -->
+    <div class="modal fade" id="sign-out">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Want to leave?</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            Press logout to leave
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
+            <form method="POST" action="{% url 'logoutuser' %}">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of modal -->
+
+    <!-- cards -->
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row pt-md-5 mt-md-3 mb-5">
+              <div class="col-xl-3 col-sm-6 p-2">
+                  <a href="{% url 'new_register' %}">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-user fa-3x text-info"></i>
+                      <div class="text-right text-secondary">
+                        <h5 class=" card-custom">New</h5>
+                        <h3>Register</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Register Now</span>
+                  </div>
+                </div>
+                </a>
+              </div>
+              <div class="col-xl-3 col-sm-6 p-2">
+                <a href="{% url 'edit_registers' %}">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fas fa-user-edit fa-3x text-info"></i>
+                      <div class="text-right text-secondary">
+                        <h5>Edit</h5>
+                        <h3>Registers</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Edit Now</span>
+                  </div>
+                </div>
+            </a>
+              </div>
+              <div class="col-xl-3 col-sm-6 p-2">
+                <a href="{% url 'view_registers' %}">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-users fa-3x text-info"></i>
+                      <div class="text-right text-secondary">
+                        <h5>View</h5>
+                        <h3>Registers</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>View Now</span>
+                  </div>
+                </div>
+            </a>
+              </div>
+              <div class="col-xl-3 col-sm-6 p-2">
+                <a href="{% url 'help' %}">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fas fa-question fa-3x text-danger"></i>
+                      <div class="text-right text-secondary">
+                        <h5>Need</h5>
+                        <h3>Any Help</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Go Now</span>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of cards -->
+
+    
+    {% block content %} {% endblock %}
+
+    <!-- footer -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row border-top pt-3">
+              <div class="col-lg-6">
+              </div>
+              <div class="col-lg-6 text-center">
+                <p class="initialism">&copy; Copyright 2022 by Ayan Paul. This is a fake website.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end of footer -->
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="{% static 'private/js/script.js' %}"></script>
+  </body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+html,
+body {
+  height: 100%;
+}
+
+/* Carousel*/
+
+.carousel-inner {
+  height: 35rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .carousel-inner {
+    height: 28rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .carousel-inner {
+    height: 25rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .carousel-inner {
+    height: 15rem;
+  }
+}
+
+
+
+
+
+/* Vote Check */
+
+
+.votecheck-container{
+  margin-top: 10% ;
+  margin-bottom: 10%; 
+}
+.votecheck-form-image{
+  padding: 3% 0% 0%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  text-align: center
+}
+
+.votecheck-form-check{
+  text-align: center;
+  padding: 6%;
+  background: linear-gradient(to right, #3F5EFB, #FC466B);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.votecheck-form-check h3 {
+  color: #fff;
+}
+
+.votecheck-form-check form{
+  padding: 10%;
+}
+.btnSubmit
+{
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+}
+
+.votecheck-form-check .btnSubmit{
+  font-weight: 600;
+  color: #0062cc;
+  background-color: #fff;
+}
+.votecheck-form-check .complain{
+  color: #F3F4ED;
+  font-weight: 600;
+  text-decoration: none;
+}
+
